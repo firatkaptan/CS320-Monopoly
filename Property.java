@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Property extends Square{
 	int price,rent,buildCost,buildings;
+	Player owner;
 	
 	
 	public Property(int x,int y,Color color,String name,int price,int rent,int buildCost){
@@ -17,6 +18,9 @@ public class Property extends Square{
 	}
 	void build(int a){
 		buildings+=a;
+	}
+	void setOwner(Player player){
+		owner=player;
 	}
 
 }

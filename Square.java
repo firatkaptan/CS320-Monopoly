@@ -9,6 +9,7 @@ public class Square{
 	char type;
 	Color color;
 	String name;
+	
 
 	public Square(int x,int y, char type,Color color,String name){
 		this.x=x;
