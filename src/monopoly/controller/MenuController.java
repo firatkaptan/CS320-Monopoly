@@ -56,7 +56,7 @@ public class MenuController {
 	
 	private boolean anyFieldNull(MainController controller){
 		return controller.getMenu().txtFieldPlayer1.getText().isEmpty() || controller.getMenu().txtFieldPlayer2.getText().isEmpty() 
-					|| controller.getMenu().txtFieldPlayer3.getText().isEmpty() || controller.getMenu().txtFieldPlayer3.getText().isEmpty() ;
+					|| controller.getMenu().txtFieldPlayer3.getText().isEmpty() || controller.getMenu().txtFieldPlayer4.getText().isEmpty() ;
 	}
 	
 	private void initTokens(MainController controller){
