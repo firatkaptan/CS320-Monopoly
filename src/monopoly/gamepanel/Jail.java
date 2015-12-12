@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import monopoly.model.Player;
+
 public class Jail extends Square{
 	int x,y;
 	public Jail(int x,int y){
@@ -22,5 +24,11 @@ public class Jail extends Square{
 		g.setFont(new Font("Serif", Font.BOLD, 12));
 		g.drawString(name, 44-name.length()*3, 20);
 		
+	}
+	
+	
+	public void inJailRule(Player player, Map map) {
+		System.out.println(player.getName() + " is in Jail now and lost 500 dollar.");
+		player.spendMoney(500);
 	}
 }
