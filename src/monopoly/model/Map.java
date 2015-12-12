@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 public class Map extends JPanel implements MouseListener{
 	HashMap<String, Square> squareMap = new HashMap<String,Square>();
-	Square[] squareArray=new Square[40];
+	Square[] squareArray=new Square[28];
 	int y;
 	public Map(int y){
 		this.y=y;
@@ -49,7 +49,7 @@ public class Map extends JPanel implements MouseListener{
 			while (sc.hasNext()) {
 				String i = sc.next();
 				if(i.equals("P")){
-					Property p=new Property(k*108, 0, new Color(sc.nextInt(), sc.nextInt(), sc.nextInt()), sc.next(), sc.nextInt(), sc.nextInt(), sc.nextInt());
+					Property p=new Property(y, k, new Color(sc.nextInt(), sc.nextInt(), sc.nextInt()), sc.next(), sc.nextInt(), sc.nextInt(), sc.nextInt());
 					addSquare(p,k);
 					k++;
 				}

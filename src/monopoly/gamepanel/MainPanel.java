@@ -11,7 +11,7 @@ public class MainPanel extends JFrame{
 	int x,y;
 	public MainPanel(){
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setSize(dim.width,dim.height);
+		setSize(800,800);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		x=getWidth();
 		y=getHeight();
