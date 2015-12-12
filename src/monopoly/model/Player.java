@@ -8,6 +8,7 @@ public class Player {
 	int money;
 	private String name;
 	private Token token;
+	boolean bankrupt = false;
 	ArrayList<Property> properties= new ArrayList<Property>();
 	public Player(String name,Token token){
 		this.name=name;
@@ -36,5 +37,12 @@ public class Player {
 	}
 	public Token getToken(){
 		return token;
+	}
+	public void setBankrupt(boolean bankrupt) {
+		this.bankrupt = bankrupt;
+	}
+	
+	public boolean isBankrupt() {
+		return bankrupt;
 	}
 }
