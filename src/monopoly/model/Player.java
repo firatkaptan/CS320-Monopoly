@@ -2,6 +2,8 @@ package monopoly.model;
 
 import java.util.ArrayList;
 
+import monopoly.gamepanel.Property;
+
 public class Player {
 	int money;
 	String name;
