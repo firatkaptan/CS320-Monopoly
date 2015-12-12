@@ -14,19 +14,22 @@ import monopoly.model.Token;
 public class MenuController {
 
 	public void play(MainController controller){
-		if(!anyFieldNull(controller)){
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		Main.frame.setSize(dim.width-120,dim.height-120);
-		Main.frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		int width = Main.frame.getWidth();
-		int height = Main.frame.getHeight();
-		controller.map = new Map(height, controller);
-		controller.setView(controller.map, width, height);
-		initComponents(controller);
-		setTurnLimit(controller);
-		System.out.println(controller.numberOfTurns);
+	
+		if(sameNickName(controller)){
+			JOptionPane.showMessageDialog(null, "Select different Nick Names for each player!");
+		}else if(anyFieldNull(controller)){
+			JOptionPane.showMessageDialog(null, "Please fill all of the player names !");
 		}else{
-			JOptionPane.showMessageDialog(null, "Fill all of the fields !");
+			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+			Main.frame.setSize(dim.width-120,dim.height-120);
+			Main.frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+			int width = Main.frame.getWidth();
+			int height = Main.frame.getHeight();
+			controller.map = new Map(height, controller);
+			controller.setView(controller.map, width, height);
+			initComponents(controller);
+			setTurnLimit(controller);
+			System.out.println(controller.numberOfTurns);
 		}
 	}
 	
@@ -58,6 +61,15 @@ public class MenuController {
 		return controller.getMenu().txtFieldPlayer1.getText().isEmpty() || controller.getMenu().txtFieldPlayer2.getText().isEmpty() 
 					|| controller.getMenu().txtFieldPlayer3.getText().isEmpty() || controller.getMenu().txtFieldPlayer4.getText().isEmpty() ;
 	}
+	
+	private boolean sameNickName(MainController controller){
+		return (controller.getMenu().txtFieldPlayer1.getText()).equals(controller.getMenu().txtFieldPlayer2.getText())
+			||(controller.getMenu().txtFieldPlayer1.getText()).equals(controller.getMenu().txtFieldPlayer3.getText())
+			||(controller.getMenu().txtFieldPlayer1.getText()).equals(controller.getMenu().txtFieldPlayer4.getText())
+			||(controller.getMenu().txtFieldPlayer2.getText()).equals(controller.getMenu().txtFieldPlayer3.getText())
+			||(controller.getMenu().txtFieldPlayer2.getText()).equals(controller.getMenu().txtFieldPlayer4.getText())
+			||(controller.getMenu().txtFieldPlayer3.getText()).equals(controller.getMenu().txtFieldPlayer4.getText());
+			}
 	
 	private void initTokens(MainController controller){
 		Token token1 = new Token("Car");
