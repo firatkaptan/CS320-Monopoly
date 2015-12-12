@@ -12,11 +12,13 @@ import java.util.Scanner;
 import javax.swing.JPanel;
 
 import monopoly.controller.MainController;
+import monopoly.model.Player;
 
 public class Map extends JPanel implements MouseListener{
 	HashMap<String, Square> squareMap = new HashMap<String,Square>();
 	Square[] squareArray=new Square[28];
 	int y;
+	Player[] players;
 	public Map(int y, MainController controller){
 		this.y=y;
 		this.setSize(y, y);
@@ -107,6 +109,15 @@ public class Map extends JPanel implements MouseListener{
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
+	}
+	public Player getMaxMoneyPlayer() {
+		Player maxplayer = null;
+		for(Player player:players){
+			if(maxplayer == null || maxplayer.getMoney() < player.getMoney()){
+				maxplayer = player;
+			}
+		}
+		return maxplayer;
 	}
 }
 
