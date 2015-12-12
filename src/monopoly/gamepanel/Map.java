@@ -127,4 +127,28 @@ public class Map extends JPanel implements MouseListener{
 		}
 		return maximumplayer;
 	}
+	
+	public boolean hasWinner() {
+		int counter = 0;
+		for(Player player:players){
+			if(!player.isBankrupt()){
+				counter++;
+			}
+		}
+		return counter <= 1;
+	}
+	
+	public Player getWinner() {
+		if(!hasWinner()){ 
+			return null;
+			}
+		for(Player player:players){
+			if(!player.isBankrupt()){ 
+				return player; 
+				}
+		}
+		return null;
+	}
 }
+
+
