@@ -4,9 +4,11 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 import monopoly.gamepanel.Map;
+import monopoly.gamepanel.Monopoly;
 import monopoly.main.Main;
 import monopoly.model.Player;
 import monopoly.model.Token;
@@ -21,16 +23,22 @@ public class MenuController {
 			JOptionPane.showMessageDialog(null, "Please fill all of the player names !");
 		}else{
 			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-			Main.frame.setSize(dim.width-120,dim.height-120);
-			Main.frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+			Main.frame.setSize(dim.width-120,dim.height-120); 
 			int width = Main.frame.getWidth();
 			int height = Main.frame.getHeight();
 			controller.map = new Map(height, controller);
-			controller.setView(controller.map, width, height);
+			controller.monopoly = new Monopoly(controller);
+			controller.setView(controller.monopoly, width*4/5, height);
 			initComponents(controller);
 			setTurnLimit(controller);
-			System.out.println(controller.numberOfTurns);
+			Player p = controller.players[0];
+			controller.setCurrentPlayer(p);
+			updateText(controller.monopoly.lblCurrentPlayer, p.getName());
 		}
+	}
+	
+	private void updateText(JLabel label, String str){
+		label.setText(label.getText() + str);
 	}
 	
 	private void setTurnLimit(MainController controller){

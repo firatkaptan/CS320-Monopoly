@@ -1,15 +1,16 @@
 package monopoly.controller;
 import java.awt.Container;
-import javax.swing.JComboBox;
+
 import monopoly.gamepanel.Map;
 import monopoly.gamepanel.Menu;
+import monopoly.gamepanel.Monopoly;
 import monopoly.main.Main;
 import monopoly.model.Player;
 import monopoly.model.Token;
 
 public class MainController {
 
-	private int currentTurn;
+	public int currentTurn;
 	public int numberOfTurns;
 	
 	public Player[] players;
@@ -18,6 +19,7 @@ public class MainController {
 	private Player currentPlayer;
 	private Menu menu;
 	public Map map;
+	public Monopoly monopoly;
 	
 	public MenuController menuController;
 	public MonopolyController monopolyController;
@@ -33,18 +35,17 @@ public class MainController {
 		Main.frame.setContentPane((Container) view);
 		Main.frame.pack();
 		Main.frame.setSize(width, height);
-		System.out.println("Intent has changed");
 	}
 	
 	public Menu getMenu(){
 		return menu;
 	}
 	
-	public Map getMap(){
-		return map;
-	}
-	
 	public Player getCurrentPlayer(){
 		return currentPlayer;
+	}
+	
+	public void setCurrentPlayer(Player p){
+		currentPlayer = p;
 	}
 }
