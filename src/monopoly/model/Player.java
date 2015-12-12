@@ -13,6 +13,10 @@ public class Player {
 		this.name=name;
 		this.token=token;
 	}
+	
+	public int getMoney() {
+		return money;
+	}
 	public String getName(){
 		return name;
 	}
