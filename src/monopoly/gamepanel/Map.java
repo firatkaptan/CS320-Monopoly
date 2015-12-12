@@ -18,6 +18,7 @@ public class Map extends JPanel implements MouseListener{
 	HashMap<String, Square> squareMap = new HashMap<String,Square>();
 	Square[] squareArray=new Square[28];
 	int y;
+	int actualTurn=0;
 	Player[] players;
 	public Map(int y, MainController controller){
 		this.y=y;
@@ -85,6 +86,13 @@ public class Map extends JPanel implements MouseListener{
 			e.printStackTrace();
 		}
 	}
+	
+	public void nextTurn() {
+		if(actualTurn+1 >= players.length){
+			actualTurn = 0;
+		}
+	}
+	
 	public void mouseClicked(MouseEvent event){
 		
 	}
@@ -111,14 +119,12 @@ public class Map extends JPanel implements MouseListener{
 
 	}
 	public Player getMaxMoneyPlayer() {
-		Player maxplayer = null;
+		Player maximumplayer = null;
 		for(Player player:players){
-			if(maxplayer == null || maxplayer.getMoney() < player.getMoney()){
-				maxplayer = player;
+			if(maximumplayer == null || maximumplayer.getMoney() < player.getMoney()){
+				maximumplayer = player;
 			}
 		}
-		return maxplayer;
+		return maximumplayer;
 	}
 }
-
-
