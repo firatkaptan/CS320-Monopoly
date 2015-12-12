@@ -6,8 +6,8 @@ import monopoly.gamepanel.Property;
 
 public class Player {
 	int money;
-	String name;
-	Token token;
+	private String name;
+	private Token token;
 	ArrayList<Property> properties= new ArrayList<Property>();
 	public Player(String name,Token token){
 		this.name=name;
@@ -29,5 +29,8 @@ public class Player {
 	public void sell(Property p){
 		properties.remove(p);
 		addMoney(p.price);
+	}
+	public Token getToken(){
+		return token;
 	}
 }

@@ -1,38 +1,32 @@
 package monopoly.controller;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
-
 import monopoly.gamepanel.Map;
 import monopoly.gamepanel.Menu;
 import monopoly.main.Main;
 import monopoly.model.Player;
+import monopoly.model.Token;
 
 public class MainController {
 
 	private int currentTurn;
 	public int numberOfTurns;
 	
+	public Player[] players;
+	public Token[] tokens;
+	
 	private Player currentPlayer;
 	private Menu menu;
 	public Map map;
 	
 	public MenuController menuController;
+	public MonopolyController monopolyController;
 	
 	
 	public MainController(){
 		menuController = new MenuController();
+		monopolyController = new MonopolyController();
 		menu = new Menu(this);
-		setTurnLimit();
-	}
-	
-	private void setTurnLimit() {
-		JComboBox<Integer> comboBox = this.menu.comboBox;
-		int turn = (int) comboBox.getSelectedItem();
-		numberOfTurns = turn;
 	}
 	
 	public void setView(Object view, int width, int height){

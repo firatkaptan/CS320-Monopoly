@@ -1,14 +1,15 @@
 package monopoly.model;
 
 public class Token {
-	Player player;
-	public Token(){
-		
+	
+	private String name;
+	
+	public Token(String name){
+		this.name = name;
 	}
-	public void setPlayer(Player p){
-		player=p;
+	
+	public String getName(){
+		return name;
 	}
-	public Player getPlayer(){
-		return player;
-	}
+
 }

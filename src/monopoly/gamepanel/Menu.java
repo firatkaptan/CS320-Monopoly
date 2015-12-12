@@ -63,6 +63,13 @@ public class Menu extends JPanel{
 		comboBox.addItem(200);
 		
 		JButton btnHowToPlay = new JButton("How to Play ?");
+		btnHowToPlay.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.menuController.howToPlay(controller);
+			}
+			
+		});
 		add(btnHowToPlay);
 		
 		JButton btnStart = new JButton("Start");
@@ -76,6 +83,7 @@ public class Menu extends JPanel{
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controller.menuController.exit(controller);
 			}
 		});
 		add(btnExit);
