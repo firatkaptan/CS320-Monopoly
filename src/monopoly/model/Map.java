@@ -52,7 +52,28 @@ public class Map extends JPanel implements MouseListener{
 					Property p=new Property(y, k, new Color(sc.nextInt(), sc.nextInt(), sc.nextInt()), sc.next(), sc.nextInt(), sc.nextInt(), sc.nextInt());
 					addSquare(p,k);
 					k++;
+				}else if(i.equals("G")){
+					GoToJail g=new GoToJail(y, k);
+					addSquare(g,k);
+					k++;
+				}else if(i.equals("C")){
+					Chance c=new Chance(y, k);
+					addSquare(c,k);
+					k++;
+				}else if(i.equals("L")){
+					ParkingLot l=new ParkingLot(y, k);
+					addSquare(l,k);
+					k++;
+				}else if(i.equals("J")){
+					Jail j=new Jail(y, k);
+					addSquare(j,k);
+					k++;
+				}else if(i.equals("S")){
+					Start s=new Start(y, k);
+					addSquare(s,k);
+					k++;
 				}
+				
 			}
 			sc.close();
 
