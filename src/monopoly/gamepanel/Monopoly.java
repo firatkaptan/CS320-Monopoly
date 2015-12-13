@@ -3,36 +3,54 @@ package monopoly.gamepanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import monopoly.controller.MainController;
-import javax.swing.SwingConstants;
 
 public class Monopoly extends JPanel{
 
 	public JPanel stats;
 	public JLabel lblCurrentPlayer;
-	
+	public JLabel lblTurnLimit;
+	public JLabel lblCurrentTurn;
+	private JScrollPane scrollPane;
+	public JTextPane txtpnConsole;
+	public JLabel lblDice1;
+	public JLabel lblDice2;
+
+
 	public Monopoly(MainController controller){
 		setLayout(new BorderLayout());
 		Map map = controller.map;
 		add(map);
 		stats = new JPanel();	
 		add(stats, BorderLayout.EAST);
-		stats.setLayout(new GridLayout(5, 1, 0, 0));
-		
-		JLabel lblTurnLimit = new JLabel("Number of Turns : ");
+		stats.setLayout(new GridLayout(5, 2, 0, 0));
+
+		lblDice1 = new JLabel();
+		lblDice1.setIcon(new ImageIcon(Monopoly.class.getResource("/dice_1.png")));
+		stats.add(lblDice1);
+
+		lblDice2 = new JLabel();
+		lblDice2.setIcon(new ImageIcon(Monopoly.class.getResource("/dice_1.png")));
+		stats.add(lblDice2);
+
+		lblTurnLimit = new JLabel("Number of Turns : ");
 		stats.add(lblTurnLimit);
 		
-		JLabel lblCurrentTurn = new JLabel("Current Turn : ");
+		lblCurrentTurn = new JLabel("Current Turn : ");
 		stats.add(lblCurrentTurn);
 		
 		lblCurrentPlayer = new JLabel("Current Player : ");
 		stats.add(lblCurrentPlayer);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		stats.add(lblNewLabel_2);
+		scrollPane = new JScrollPane();
+		stats.add(scrollPane);
+		
+		txtpnConsole = new JTextPane();
+		txtpnConsole.setText("Console\nGame Started ...");
+		txtpnConsole.setEditable(false);
+		scrollPane.setViewportView(txtpnConsole);
 		
 	}
 }

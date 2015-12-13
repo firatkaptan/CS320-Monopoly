@@ -1,5 +1,5 @@
 package monopoly.gamepanel;
-
+/*
 import monopoly.model.Player;
 import monopoly.model.Token;
 import org.junit.Before;
@@ -86,3 +86,4 @@ property.setOwner(player);
 
     }
 }
+*/

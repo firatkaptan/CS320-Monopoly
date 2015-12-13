@@ -1,5 +1,5 @@
 package monopoly.model;
-
+/*
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,3 +38,4 @@ public class DiceTest {
         assertTrue(faceValue==6);
     }
 }
+*/

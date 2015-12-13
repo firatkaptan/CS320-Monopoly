@@ -3,13 +3,12 @@ package monopoly.controller;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import monopoly.gamepanel.Map;
 import monopoly.gamepanel.Monopoly;
 import monopoly.main.Main;
+import monopoly.model.Dice;
 import monopoly.model.Player;
 import monopoly.model.Token;
 
@@ -34,9 +33,31 @@ public class MenuController {
 			Player p = controller.players[0];
 			controller.setCurrentPlayer(p);
 			updateText(controller.monopoly.lblCurrentPlayer, p.getName());
+			updateText(controller.monopoly.lblCurrentTurn, String.valueOf(controller.currentTurn));
+			updateText(controller.monopoly.lblTurnLimit, String.valueOf(controller.numberOfTurns));
+			controller.dice1.roll();
+			controller.dice2.roll();
+			updateDiceImage(controller.dice1.getValue(), controller.monopoly.lblDice1);
+			updateDiceImage(controller.dice2.getValue(), controller.monopoly.lblDice2);
 		}
 	}
-	
+
+	public void updateDiceImage(int faceValue, JLabel label){
+		if(faceValue == 1)
+			label.setIcon(new ImageIcon(Monopoly.class.getResource("/dice_1.png")));
+		else if(faceValue == 2)
+			label.setIcon(new ImageIcon(Monopoly.class.getResource("/dice_2.png")));
+		else if(faceValue == 3)
+			label.setIcon(new ImageIcon(Monopoly.class.getResource("/dice_3.png")));
+		else if(faceValue == 4)
+			label.setIcon(new ImageIcon(Monopoly.class.getResource("/dice_4.png")));
+		else if(faceValue == 5)
+			label.setIcon(new ImageIcon(Monopoly.class.getResource("/dice_5.png")));
+		else if(faceValue == 6)
+			label.setIcon(new ImageIcon(Monopoly.class.getResource("/dice_6.png")));
+
+	}
+
 	private void updateText(JLabel label, String str){
 		label.setText(label.getText() + str);
 	}
@@ -48,6 +69,8 @@ public class MenuController {
 	}
 	
 	private void initComponents(MainController controller){
+		controller.dice1 = new Dice();
+		controller.dice2 = new Dice();
 		controller.players = new Player[4];
 		controller.tokens = new Token[4];
 		String p1Name = controller.getMenu().txtFieldPlayer1.getText();

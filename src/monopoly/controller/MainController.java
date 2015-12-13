@@ -5,6 +5,7 @@ import monopoly.gamepanel.Map;
 import monopoly.gamepanel.Menu;
 import monopoly.gamepanel.Monopoly;
 import monopoly.main.Main;
+import monopoly.model.Dice;
 import monopoly.model.Player;
 import monopoly.model.Token;
 
@@ -15,9 +16,13 @@ public class MainController {
 	
 	public Player[] players;
 	public Token[] tokens;
+
+	public Dice dice1;
+	public Dice dice2;
 	
 	private Player currentPlayer;
 	private Menu menu;
+
 	public Map map;
 	public Monopoly monopoly;
 	

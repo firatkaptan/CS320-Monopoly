@@ -1,5 +1,5 @@
 package monopoly.model;
-
+/*
 import monopoly.gamepanel.Property;
 import org.junit.Before;
 import org.junit.Test;
@@ -118,3 +118,4 @@ Player player;
         assertTrue(player.isBankrupt()==player2.isBankrupt());
     }
 }
+*/
