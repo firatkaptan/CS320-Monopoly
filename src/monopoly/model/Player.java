@@ -2,21 +2,16 @@ package monopoly.model;
 
 import java.util.ArrayList;
 
-import monopoly.gamepanel.Property;
-
 public class Player {
+	int number;
 	int money;
-	private String name;
-	private Token token;
-	boolean bankrupt = false;
+	String name;
+	public Token token;
 	ArrayList<Property> properties= new ArrayList<Property>();
-	public Player(String name,Token token){
+	public Player(String name,Token token,int number){
 		this.name=name;
 		this.token=token;
-	}
-	
-	public int getMoney() {
-		return money;
+		this.number=number;
 	}
 	public String getName(){
 		return name;
@@ -33,16 +28,6 @@ public class Player {
 	}
 	public void sell(Property p){
 		properties.remove(p);
-		addMoney(p.price);
-	}
-	public Token getToken(){
-		return token;
-	}
-	public void setBankrupt(boolean bankrupt) {
-		this.bankrupt = bankrupt;
-	}
-	
-	public boolean isBankrupt() {
-		return bankrupt;
+		addMoney(p.price/2);
 	}
 }
