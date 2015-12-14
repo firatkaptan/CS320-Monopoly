@@ -26,16 +26,18 @@ public class DiceTest {
     public void testRoll() throws Exception {
 
         dice.roll();
-        int faceValue=5;
-        assertTrue(faceValue==5);
+        int faceValue=dice.getValue();
+        assertTrue(faceValue!=0);
     }
 
     @Test
     public void testGetValue() throws Exception {
 
-        dice.getValue();
-        int faceValue=6;
-        assertTrue(faceValue==6);
+        dice.roll();
+
+        int faceValue=dice.getValue();
+        assertTrue(faceValue==dice.getValue());
     }
 }
+
 */
