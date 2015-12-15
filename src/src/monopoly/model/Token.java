@@ -12,7 +12,7 @@ public class Token extends JPanel{
 	int position;
 	Square s;
 	int x;
-	int playerNumber;
+	public int playerNumber;
 	public Token(Color color,int x,int playerNumber){
 		this.color=color;
 		this.x=x;
@@ -37,9 +37,6 @@ public class Token extends JPanel{
 	}
 	public Square getSquare(){
 		return s;
-	}
-	public Player getPlayer(){
-		return player;
 	}
 
 	public void paintComponent(Graphics g){
