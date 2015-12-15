@@ -15,10 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-public class Map extends JPanel implements MouseListener{
+public class Map extends JPanel{
 	HashMap<String, Square> squareMap = new HashMap<String,Square>();
 	public Square[] squareArray=new Square[28];
-	public JButton roll;
+	public JButton roll,endTurn,buy,sell,payOut;
 	int y;
 	public Dice d1,d2;
 	Player[] players;
@@ -29,17 +29,13 @@ public class Map extends JPanel implements MouseListener{
 		this.y=y;
 		this.setSize(y, y);
 		this.setLayout(new BorderLayout());
-		System.out.println(y);
+		
 		MapCreator();
 		initTokens();
-		
 		createDices();
-		
-		drawMap();
-		
-		System.out.println(((Property) squareMap.get("ISTANBUL")).getRent());
-		
-		repaint();
+		addButtons();
+		drawMap();	
+		addMiddlePanel();
 		setVisible(true);
 	}
 	private void initTokens() {
@@ -49,25 +45,51 @@ public class Map extends JPanel implements MouseListener{
 			tokens[i].move(squareArray[0]);
 		}
 	}
+	void addMiddlePanel(){
+		JPanel p=new JPanel();
+		p.setBackground(Color.CYAN);
+		add(p);
+	}
 	void addSquare(Square s,int i){
 		squareArray[i]=s;
 		squareMap.put(s.name, s);
 	}
+	void addButtons(){
+		roll=new JButton("ROLL");
+		roll.setLocation(19*y/48,y*3/8+5*y/48);
+		roll.setSize(10*y/48,y/24);
+		endTurn=new JButton("End Turn");
+		endTurn.setLocation(19*y/48,y*3/8+11*y/48);
+		endTurn.setSize(10*y/48,y/24);
+		buy=new JButton("BUY");
+		buy.setLocation(19*y/48,y*3/8+8*y/48);
+		buy.setSize(5*y/48,y/24);
+		sell=new JButton("SELL");
+		sell.setLocation(24*y/48,y*3/8+8*y/48);
+		sell.setSize(5*y/48,y/24);
+		payOut=new JButton("GET OUT");
+		payOut.setLocation(19*y/48,y*3/8+14*y/48);
+		payOut.setSize(10*y/48,y/24);
+		buy.setEnabled(false);
+		sell.setEnabled(false);
+		payOut.setEnabled(false);
+		add(payOut);
+		add(buy);
+		add(sell);
+		add(roll);
+		add(endTurn);
+	}
 	void createDices(){
 		d1=new Dice(y,0);
-		d1.setLocation(19*y/48,y*5/8);
+		d1.setLocation(19*y/48,y*3/8);
 		d2=new Dice(y,0);
-		d2.setLocation(25*y/48,y*5/8);
-		roll=new JButton("ROLL");
-		roll.setLocation(19*y/48,y*5/8+5*y/48);
-		roll.setSize(10*y/48,y/24);
-		add(roll);
+		d2.setLocation(25*y/48,y*3/8);
+		
 		add(d1);
 		add(d2);
 	}
 	void drawMap(){
 		for(int i=0;i<squareArray.length;i++){
-			squareArray[i].addMouseListener(this);
 			add(squareArray[i]);
 		}
 	}
@@ -115,31 +137,4 @@ public class Map extends JPanel implements MouseListener{
 			e.printStackTrace();
 		}
 	}
-	public void mouseClicked(MouseEvent event){
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent event) {
-		if(event.getSource() instanceof Property){
-			System.out.println(((Property) event.getSource()).getRent());;
-		}
-
-	}
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
 }
-
-
