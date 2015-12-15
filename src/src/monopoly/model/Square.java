@@ -8,12 +8,11 @@ import javax.swing.JPanel;
 public abstract class Square extends JPanel{
 	int a,b;
 	char type;
-	Color color;
-	String name;
+	public Color color;
+	public String name;
 	
 
 	public Square(int x,int y,char type,Color color,String name){
-		
 		if(y<7){
 			this.a=x*y/8;
 			this.b=0;
