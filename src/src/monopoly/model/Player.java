@@ -3,11 +3,12 @@ package monopoly.model;
 import java.util.ArrayList;
 
 public class Player {
-	int number;
-	int money;
+	public int number;
+	int money=150000;
 	String name;
 	public Token token;
-	ArrayList<Property> properties= new ArrayList<Property>();
+	public boolean jailed;
+	public ArrayList<Property> properties= new ArrayList<Property>();
 	public Player(String name,Token token,int number){
 		this.name=name;
 		this.token=token;
@@ -26,8 +27,15 @@ public class Player {
 		properties.add(p);
 		spendMoney(p.price);
 	}
+	public boolean isInJail(){
+		return jailed;
+	}
+	public int getMoney(){
+		return money;
+	}
 	public void sell(Property p){
 		properties.remove(p);
-		addMoney(p.price/2);
+		addMoney(p.price/2+(p.buildings*p.buildCost)/2);
+		p.buildings=0;
 	}
 }
