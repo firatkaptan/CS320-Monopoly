@@ -4,42 +4,44 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 public class InformationPanel extends JPanel{
-	public JLabel lblCurrentPlayer,lblCurrentTurn,lblTurnLimit,lblCurrentPlayer2,lblCurrentTurn2,lblTurnLimit2,lblCurrentPlayer3,lblCurrentTurn3,lblTurnLimit3;
+	public JLabel lblCurrentPlayer,lblCurrentTurn,lblTurnLimit,lblOwner,lblCurrentLocationName,lblCurrentPrice;
 	int x,y;
 	public InformationPanel(int x,int y){
 		this.x=x;
 		this.y=y;
-		setLayout(new GridLayout(5, 3));	
-		setBounds(y*7/8, 0, x-y, y/4);
+		setLayout(new GridLayout(3, 2));
+		setBounds(y*7/8+5, 5, (x-y)/2, 7*y/30-10);
+		setBorder(new TitledBorder(null, "Game Info", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setVisible(true);
 		
-		lblCurrentPlayer=new JLabel("s");
-		lblCurrentTurn=new JLabel("f");
-		lblTurnLimit =new JLabel("a");
-		lblCurrentPlayer2=new JLabel("s2");
-		lblCurrentTurn2=new JLabel("f2");
-		lblTurnLimit2 =new JLabel("a2");
-		lblCurrentPlayer3=new JLabel("s3");
-		lblCurrentTurn3=new JLabel("f3");
-		lblTurnLimit3 =new JLabel("a4");
+		lblCurrentPlayer=new JLabel("");
+		lblCurrentTurn=new JLabel("");
+		lblTurnLimit =new JLabel("");
+		lblOwner=new JLabel("");
+		lblCurrentLocationName=new JLabel("");
+		lblCurrentPrice =new JLabel("");
+		
 		add(lblTurnLimit);
-		add(lblCurrentTurn2);		
+		add(lblCurrentLocationName);		
 		add(lblCurrentPlayer);
-		add(lblTurnLimit2);
+		add(lblCurrentPrice);
 		add(lblCurrentTurn);
-		add(lblCurrentPlayer2);
-		add(lblTurnLimit3);
-		add(lblCurrentTurn3);
-		add(lblCurrentPlayer3);
-		
-		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		add(lblNewLabel_2);
-		
+		add(lblOwner);
+	}
+	public void setCurrentPrice(int a){
+		lblCurrentPrice.setText("Price : "+a);
+	}
+	public void setOwnerName(String s){
+		lblOwner.setText("Owner : "+s);
+	}
+	public void setCurrentName(String s){
+		lblCurrentLocationName.setText("Current Location : "+s);
 	}
 	public void setTurnLimit(int i){
 		lblTurnLimit.setText("Number of Turns : " +i);
