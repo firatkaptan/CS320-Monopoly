@@ -5,9 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 public class Property extends Square{
-	int price,rent,buildCost,buildings,x,y;
-	Player owner;
-	Color color;
+	public int price,rent,buildCost,buildings,x,y;
+	public Player owner=null;
+	public Color color;
 	
 	
 	public Property(int x,int y,Color color,String name,int price,int rent,int buildCost){
@@ -21,15 +21,17 @@ public class Property extends Square{
 		buildings=0;
 		setLocation(super.getX(),super.getY());
 		setSize(x/8,x/8);
-		setOpaque(true);
 		setVisible(true);
 		setBackground(Color.WHITE);
 	}
 	void build(int a){
 		buildings+=a;
 	}
-	void setOwner(Player player){
+	public void setOwner(Player player){
 		owner=player;
+	}
+	public Player getOwner(){
+		return owner;
 	}
 	public int getCost(){
 		return buildCost;
@@ -39,6 +41,13 @@ public class Property extends Square{
 	}
 	public int getPrice(){
 		return price;
+	}
+	public boolean hasOwner(){
+		if(owner==null){
+			return false;
+		}else{
+			return true;
+		}
 	}
 	
 	public void paintComponent(Graphics g){
