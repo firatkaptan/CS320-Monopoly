@@ -16,6 +16,8 @@ public class MainPanel extends JFrame{
 	public MainMenu menu;
 	public Map map;
 	public InformationPanel info;
+	public PlayerPanel playerPanel;
+	public MouseInfoPanel mousePanel;
 	Controller controller;
 	public Boolean gameStatus;
 	public MainPanel(){
@@ -27,7 +29,7 @@ public class MainPanel extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		startScreen();
 		
-		controller=new Controller(map,menu,this,info);
+		controller=new Controller(menu,this);
 		
 		setVisible(true);
 	}
@@ -43,8 +45,13 @@ public class MainPanel extends JFrame{
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		map=new Map(y*7/8,players,tokens);
 		info=new InformationPanel(x,y);
+		playerPanel=new PlayerPanel(x,y,players);
+		mousePanel=new MouseInfoPanel(x,y);
+		
 		add(map);
 		add(info);
+		add(playerPanel);
+		add(mousePanel);
 		gameStatus=true;
 	}
 }
