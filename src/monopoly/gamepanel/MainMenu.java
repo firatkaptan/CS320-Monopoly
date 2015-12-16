@@ -16,7 +16,7 @@ public class MainMenu extends JPanel{
 	public JComboBox<Integer> comboBox,comboBox1,comboBox2,comboBox3,comboBox4;
 	public JButton btnHowToPlay,btnStart,btnExit;
 	int x,y;
-	Color[] colors={Color.black,Color.red,Color.blue,Color.green};
+	Color[] colors={Color.black,Color.red,Color.blue,Color.green,Color.ORANGE,Color.pink};
 	public MainMenu(int x,int y){
 		this.x=x;
 		this.y=y;

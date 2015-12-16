@@ -18,6 +18,7 @@ public class MainPanel extends JFrame{
 	public InformationPanel info;
 	public PlayerPanel playerPanel;
 	public MouseInfoPanel mousePanel;
+	public HowToPlayScreen howTo;
 	Controller controller;
 	public Boolean gameStatus;
 	public MainPanel(){
@@ -29,15 +30,17 @@ public class MainPanel extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		startScreen();
 		
-		controller=new Controller(menu,this);
 		
-		setVisible(true);
+		
+		
 	}
 	public void startScreen(){
 		setSize(x/4+10,y/2+40);
 		menu=new MainMenu(x,y);
 		gameStatus=false;
 		add(menu);
+		controller=new Controller(menu,this);
+		setVisible(true);
 	}
 	public void gameScreen(Player[] players,Token[] tokens){
 		remove(menu);
@@ -54,4 +57,18 @@ public class MainPanel extends JFrame{
 		add(mousePanel);
 		gameStatus=true;
 	}
+	public void howToPlay(){
+		remove(menu);
+		setSize(x/4+10,y/2+40);
+		howTo=new HowToPlayScreen(x,y);
+		gameStatus=false;
+		add(howTo);
+		repaint();
+	}
+	public void backToMenu(){
+		remove(howTo);
+		startScreen();
+		repaint();
+	}
+	
 }

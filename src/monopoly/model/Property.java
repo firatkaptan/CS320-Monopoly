@@ -24,8 +24,11 @@ public class Property extends Square{
 		setVisible(true);
 		setBackground(Color.WHITE);
 	}
-	void build(int a){
+	public void build(int a){
 		buildings+=a;
+	}
+	public int getBuildings(){
+		return buildings;
 	}
 	public void setOwner(Player player){
 		owner=player;
@@ -38,6 +41,16 @@ public class Property extends Square{
 	}
 	public int getRent(){
 		return rent;
+	}
+	public boolean isOwner(Player p){
+		if(!hasOwner()){
+			return false;
+		}
+			
+		else{
+			return owner.getName().equals(p.getName());
+		}
+		
 	}
 	public int getPrice(){
 		return price;

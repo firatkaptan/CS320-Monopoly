@@ -33,9 +33,16 @@ public class Player {
 	public int getMoney(){
 		return money;
 	}
+	public int getScore(){
+		int score=money;
+		for(int i=0;i<properties.size();i++){
+			score+=properties.get(i).price+(properties.get(i).buildings*properties.get(i).buildCost);
+		}
+		return score;
+	}
 	public void sell(Property p){
 		properties.remove(p);
-		addMoney(p.price/2+(p.buildings*p.buildCost)/2);
+		addMoney((p.price/2)+(p.buildings*p.buildCost)/2);
 		p.buildings=0;
 	}
 }

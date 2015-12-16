@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 public class Map extends JPanel{
 	HashMap<String, Square> squareMap = new HashMap<String,Square>();
 	public Square[] squareArray=new Square[28];
-	public JButton roll,endTurn,buy,sell,payOut;
+	public JButton roll,endTurn,buy,sell,payOut,build;
 	int y;
 	public Dice d1,d2;
 	Player[] players;
@@ -70,14 +70,20 @@ public class Map extends JPanel{
 		payOut=new JButton("GET OUT");
 		payOut.setLocation(19*y/48,y*3/8+14*y/48);
 		payOut.setSize(10*y/48,y/24);
+		build=new JButton("BUILD");
+		build.setLocation(19*y/48,y*3/8+17*y/48);
+		build.setSize(10*y/48,y/24);
 		buy.setEnabled(false);
 		sell.setEnabled(false);
 		payOut.setEnabled(false);
+		build.setEnabled(false);
+		endTurn.setEnabled(false);
 		add(payOut);
 		add(buy);
 		add(sell);
 		add(roll);
 		add(endTurn);
+		add(build);
 	}
 	void createDices(){
 		d1=new Dice(y,0);
@@ -138,3 +144,5 @@ public class Map extends JPanel{
 		}
 	}
 }
+
+
